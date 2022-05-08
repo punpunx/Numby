@@ -36,6 +36,29 @@ for i,v in pairs(game:GetService("Workspace").Enemy:FindFirstChild(Mob):GetDesce
     end
 end
 end)
+Section:NewToggle("Auto Sea Warrior", "ToggleInfo", function(acd)
+   Autosea = acd
+end)
+spawn(function()
+    while wait() do
+    if Autosea then
+        pcall(function()
+local char = game.Players.LocalPlayer.Character.HumanoidRootPart
+for i,v in pairs(game:GetService("Workspace").SeaWarrior:GetDescendants()) do 
+    if v.Name == 'HumanoidRootPart' and v.Parent.Humanoid.Health > 0 then
+        char.CFrame = v.CFrame * CFrame.new(0,0,3)
+        game:GetService'VirtualUser':CaptureController()
+        game:GetService'VirtualUser':Button1Down(Vector2.new(686, 352))
+        game:GetService("Players").LocalPlayer.Backpack.Haki.Haki:FireServer("Haki")
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+                
+                end
+             end
+    end)
+    end
+end
+end)
+
 local Section = Tab:NewSection("Weapon Select")
 local Weaponlist = {}
 local Weapon = nil
