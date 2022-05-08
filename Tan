@@ -1,0 +1,292 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("UZAMA กังกัง HUB", "DarkTheme")
+local Tab = Window:NewTab("Farm")
+local Section = Tab:NewSection("Farm Select")
+
+local Moblist = {}
+local Mob = nil
+for i,v in pairs(game:GetService("Workspace").Enemy:GetChildren()) do
+   table.insert(Moblist, v.Name)
+end
+
+Section:NewDropdown("select mob", " ", Moblist, function(currentOption2)
+    Mob = currentOption2
+end)
+
+Section:NewToggle("Farm", "ToggleInfo", function(state)
+ punpun = state
+end)
+spawn(function()
+while wait() do
+    if punpun then
+        pcall(function()
+    
+local char = game.Players.LocalPlayer.Character.HumanoidRootPart
+for i,v in pairs(game:GetService("Workspace").Enemy:FindFirstChild(Mob):GetDescendants()) do 
+    if v.Name == 'HumanoidRootPart' and v.Parent.Humanoid.Health > 0 then
+        char.CFrame = v.CFrame * CFrame.new(0,0,3)
+        game:GetService'VirtualUser':CaptureController()
+        game:GetService'VirtualUser':Button1Down(Vector2.new(686, 352))
+        game:GetService("Players").LocalPlayer.Backpack.Haki.Haki:FireServer("Haki")
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+                
+                end
+             end
+    end)
+    end
+end
+end)
+local Section = Tab:NewSection("Weapon Select")
+local Weaponlist = {}
+local Weapon = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+
+local dropdown = Section:NewDropdown("Select Weapon"," ", Weaponlist , function(adw)
+ Weapon = adw
+end)
+
+Section:NewToggle("Auto Equip", " ", function(a)
+AutoEquiped = a
+end)
+
+
+spawn(function()
+while wait() do
+if AutoEquiped then
+pcall(function()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+end)
+end
+end
+end)
+
+local Section = Tab:NewSection("Inv Change")
+
+local punlist = {}
+local punew = nil
+for i,v in pairs(game:GetService("Players").LocalPlayer.Inv:GetChildren()) do
+table.insert(punlist, v.Name)
+end
+
+
+Section:NewDropdown("Select", "", punlist , function(pledf)
+    punew = pledf
+    if punew then
+        pcall(function()
+    game:GetService("ReplicatedStorage").Remote.Inv:FireServer(punew)
+end)
+end
+end)
+
+
+local Tab = Window:NewTab("Skill")
+local Section = Tab:NewSection("Must Equiq DevilFruit")
+local Section = Tab:NewSection("Light")
+Section:NewToggle("AutoFarmDF", "ToggleInfo", function(state)
+    if state then
+        _G.cdl = true
+while _G.cdl do wait()
+    pcall(function()
+game.Players.LocalPlayer.Character.Light.Event:FireServer("BarrageLight")
+game.Players.LocalPlayer.Character.Light.Event:FireServer("RainLight")
+end)
+end
+    else
+        _G.cdl = false
+while _G.cdl do wait()
+    pcall(function()
+game.Players.LocalPlayer.Character.Light.Event:FireServer("BarrageLight")
+game.Players.LocalPlayer.Character.Light.Event:FireServer("RainLight")
+end)
+end
+    end
+end)
+Section:NewToggle("Skill R", "ToggleInfo", function(state)
+    if state then
+        _G.cdl = true
+while _G.cdl do wait()
+    pcall(function()
+game.Players.LocalPlayer.Character.Light.Event:FireServer("RainLight")
+end)
+end
+    else
+        _G.cdl = false
+while _G.cdl do wait()
+    pcall(function()
+game.Players.LocalPlayer.Character.Light.Event:FireServer("RainLight")
+end)
+end
+    end
+end)
+local Section = Tab:NewSection("Bisento")
+Section:NewToggle("E", "ToggleInfo", function(state)
+    if state then
+        _G.nocdq = true
+while _G.nocdq do wait(0.3)
+    pcall(function()
+   game.Players.LocalPlayer.Character.Bisento.Client.RemoteEvent:FireServer("Quake")
+end)
+end
+    else
+        _G.nocdq = false
+while _G.nocdq do wait()
+    pcall(function()
+   game.Players.LocalPlayer.Character.Bisento.Client.RemoteEvent:FireServer("Quake")
+end)
+    end
+end
+end)
+
+local Section = Tab:NewSection("Dark Scythe")
+Section:NewToggle("E", "ToggleInfo", function(state)
+    if state then
+        _G.skillcd = true
+   while _G.skillcd do wait(0.3)
+       pcall(function()
+game.Players.LocalPlayer.Character["Dark Scythe"].Client.RemoteEvent:FireServer("DarkScythe")
+end) 
+end
+    else
+        _G.skillcd = false
+   while _G.skillcd do wait(0.1)
+       pcall(function()
+game.Players.LocalPlayer.Character["Dark Scythe"].Client.RemoteEvent:FireServer("DarkScythe")
+end) 
+end
+    end
+end)
+local Section = Tab:NewSection("Muramasa")
+Section:NewToggle("E", "ToggleInfo", function(state)
+    if state then
+        _G.skillcd = true
+   while _G.skillcd do wait(0.3)
+       pcall(function()
+game.Players.LocalPlayer.Character.Muramasa.Client.RemoteEvent:FireServer("Muramasa")
+end) 
+end
+    else
+        _G.skillcd = false
+   while _G.skillcd do wait(0.3)
+       pcall(function()
+game.Players.LocalPlayer.Character.Muramasa.Client.RemoteEvent:FireServer("Muramasa")
+end) 
+end
+    end
+end)
+local Section = Tab:NewSection("Scythe")
+Section:NewToggle("E", "ToggleInfo", function(state)
+    if state then
+       _G.skillcd = true
+while _G.skillcd do wait(0.3)
+    pcall(function()
+game.Players.LocalPlayer.Character.Scythe.Client.RemoteEvent:FireServer("Scythe")
+end)
+end
+    else
+         _G.skillcd = false
+while _G.skillcd do wait(0.3)
+    pcall(function()
+game.Players.LocalPlayer.Character.Scythe.Client.RemoteEvent:FireServer("Scythe")
+end)
+end
+    end
+end)
+local Section = Tab:NewSection("Excalibur")
+Section:NewToggle("E", "ToggleInfo", function(state)
+    if state then
+        _G.skillcd = true
+while _G.skillcd do wait(0.3)
+    pcall(function()
+game.Players.LocalPlayer.Character.Excalibur.Client.RemoteEvent:FireServer("Excalibur")
+end)
+end
+    else
+        _G.skillcd = false
+while _G.skillcd do wait(0.3)
+    pcall(function()
+game.Players.LocalPlayer.Character.Excalibur.Client.RemoteEvent:FireServer("Excalibur")
+end)
+end
+    end
+end)
+local Section = Tab:NewSection("Pole")
+Section:NewToggle("E", "ToggleInfo", function(state)
+    if state then
+        _G.skillcd = true
+while _G.skillcd do wait(0.3)
+    pcall(function()
+
+game.Players.LocalPlayer.Character.Pole.Client.RemoteEvent:FireServer("Pole")
+end)
+end
+    else
+       _G.skillcd = false
+while _G.skillcd do wait(0.3)
+    pcall(function()
+
+game.Players.LocalPlayer.Character.Pole.Client.RemoteEvent:FireServer("Pole")
+end)
+end
+    end
+end)
+local Tab = Window:NewTab("Esp")
+local Section = Tab:NewSection("FE")
+Section:NewButton("esp", "ButtonInfo", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/punpunx/Tanne/main/esp", true))()
+end)
+
+local Tab = Window:NewTab("Admin")
+local Section = Tab:NewSection("FE Admin")
+Section:NewButton("Admin1", "ButtonInfo", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+Section:NewButton("Admin2", "ButtonInfo", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/punpunx/Adri/main/Uri", true))()
+end)
+Section:NewButton("Dont press This", "ButtonInfo", function()
+    game.Players.LocalPlayer:Kick("You has Fucked By Uri")
+end)
+
+local Tab = Window:NewTab("MISC")
+local Section = Tab:NewSection("Bring Fruit Frome Anther Backpack")
+Section:NewToggle("Auto Bring Fruit", "ToggleInfo", function(asvsdf)
+    autobring = asvsdf
+end)
+
+spawn(function()
+    if autobring then
+    while wait() do
+for i,v in pairs(game:GetService("Players"):GetDescendants()) do
+    if v.Name == '???' then
+    v.Parent = game.Players.LocalPlayer.Backpack
+    end
+end
+end
+end
+end)
+
+local Section = Tab:NewSection("Bring Scroll")
+Section:NewToggle("Auto Bring Scroll", "ToggleInfo", function(asvsdfe)
+    autobringe = asvsdfe
+end)
+
+spawn(function()
+    if autobringe then
+    while wait() do
+for i,v in pairs(game:GetService("Players"):GetDescendants()) do
+    if v.Name == 'Scroll' then
+    v.Parent = game.Players.LocalPlayer.Backpack
+    end
+end
+end
+end
+end)
+
+
+
+Section:NewKeybind("RightAlt", "KeybindInfo", Enum.KeyCode.L, function()
+	Library:ToggleUI()
+end)
