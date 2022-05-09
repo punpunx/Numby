@@ -13,6 +13,7 @@ Section:NewDropdown("select mob", " ", Moblist, function(currentOption2)
     Mob = currentOption2
 end)
 
+
 Section:NewToggle("Farm", "ToggleInfo", function(state)
  punpun = state
 end)
@@ -71,10 +72,18 @@ local dropdown = Section:NewDropdown("Select Weapon"," ", Weaponlist , function(
  Weapon = adw
 end)
 
+
 Section:NewToggle("Auto Equip", " ", function(a)
 AutoEquiped = a
 end)
-
+Section:NewButton("Refresh Weapon", "Refreshes Dropdown", function()
+local Weaponlist1 = {}
+local Weapon1 = nil
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist1,v.Name)
+    dropdown:Refresh(Weaponlist1)
+end
+end)
 
 spawn(function()
 while wait() do
@@ -103,6 +112,16 @@ Section:NewDropdown("Select", "", punlist , function(pledf)
 end)
 end
 end)
+Section:NewButton("Refresh Inv", "Refreshes Dropdown", function()
+local Inv = {}
+local Inv1 = nil
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Inv1,v.Name)
+    dropdown:Refresh(Inv1)
+end
+end)
+local Tab = Window:NewTab("Auto Boss Spawn")
+local Section = Tab:NewSection("Soon")
 
 
 local Tab = Window:NewTab("Skill")
@@ -290,6 +309,12 @@ end
 end
 end
 end)
+
+local Section = Tab:NewSection("Auto Boss spawn")
+
+
+
+
 
 local Section = Tab:NewSection("Bring Scroll")
 Section:NewToggle("Auto Bring Scroll", "ToggleInfo", function(asvsdfe)
