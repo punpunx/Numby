@@ -95,6 +95,13 @@ end
 end
 end)
 
+local Section = Tab:NewSection("Inv Change")
+Section:NewButton("Inv", "ButtonInfo", function()
+    local clickdetector = game:GetService("Workspace")["Inventory_Part"].Inventory.Click.ClickDetector
+         fireclickdetector(clickdetector)
+end)
+
+
 
 local Tab = Window:NewTab("Kill All")
 local Section = Tab:NewSection("Kill")
