@@ -121,8 +121,64 @@ local Inv1 = nil
 end
 end)
 local Tab = Window:NewTab("Auto Boss Spawn")
-local Section = Tab:NewSection("Soon")
-
+Section = Tab:NewSection("Auto Boss spawn")
+Section:NewToggle("Ace", "ToggleInfo", function(state)
+    if state then
+        _G.autoaceopen = true
+while _G.autoaceopen do wait()
+            pcall(function()
+        local clickdetector = game:GetService("Workspace")["[Ace]"].ClickDetector
+         fireclickdetector(clickdetector)
+            end)
+end
+    else
+        _G.autoaceopen = false
+while _G.autoaceopen do wait()
+            pcall(function()
+        local clickdetector = game:GetService("Workspace")["[Ace]"].ClickDetector
+         fireclickdetector(clickdetector)
+            end)
+end
+    end
+end)
+Section:NewToggle("JOR (Marshroom)", "ToggleInfo", function(state)
+    if state then
+         _G.autojoropen = true
+while _G.autojoropen do wait()
+            pcall(function()
+        local clickdetector = game:GetService("Workspace")["[JOR]"].ClickDetector
+         fireclickdetector(clickdetector)
+            end)
+end
+    else
+        _G.autojoropen = false
+while _G.autojoropen do wait()
+            pcall(function()
+        local clickdetector = game:GetService("Workspace")["[JOR]"].ClickDetector
+         fireclickdetector(clickdetector)
+            end)
+end
+    end
+end)
+Section:NewToggle("Muramasa", "ToggleInfo", function(state)
+    if state then
+        _G.autojoropen = true
+while _G.autojoropen do wait()
+            pcall(function()
+        local clickdetector = game:GetService("Workspace")["[MRMS]"].ClickDetector
+         fireclickdetector(clickdetector)
+            end)
+end
+    else
+        _G.automrmopen = true
+while _G.automrmopen do wait()
+            pcall(function()
+        local clickdetector = game:GetService("Workspace")["[MRMS]"].ClickDetector
+         fireclickdetector(clickdetector)
+            end)
+end
+    end
+end)
 
 local Tab = Window:NewTab("Skill")
 local Section = Tab:NewSection("Must Equiq DevilFruit")
@@ -309,9 +365,6 @@ end
 end
 end
 end)
-
-local Section = Tab:NewSection("Auto Boss spawn")
-
 
 
 
