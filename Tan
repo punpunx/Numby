@@ -102,112 +102,6 @@ Section:NewButton("Inv", "ButtonInfo", function()
 end)
 
 
-
-local Tab = Window:NewTab("Kill All")
-local Section = Tab:NewSection("Kill")
-Section:NewToggle("kill", "ToggleInfo", function(state)
-    if state then
-        local bosses = {workspace["[JOR]"],workspace["[MRMS]"],workspace["[Ace]"],workspace.Heaven}
-_G.killall = true
-while _G.killall do wait()
-    while wait(1) do
-        pcall(function()
-            for _,v in pairs(bosses) do
-                fireclickdetector(v.ClickDetector)
-            end
-            for i,v2 in pairs(game.Players:GetChildren()) do
-                for _,v in pairs(v2.Backpack:GetChildren()) do
-                    if v:FindFirstChild("DF") and v:FindFirstChild("Event") then
-                        if v.Name == "Explosion" then
-                            v.Event:FireServer("Explosive")
-                        else
-                            v.Event:FireServer(v.Name.."Punch")
-                            v.Event:FireServer(v.Name)
-                        end
-                    end
-                end
-                if v2.Character then
-                    for _,v in pairs(v2.Character:GetChildren()) do
-                        if v:FindFirstChild("DF") and v:FindFirstChild("Event") then
-                            if v.Name == "Explosion" then
-                                v.Event:FireServer("Explosive")
-                            else
-                                v.Event:FireServer(v.Name.."Punch")
-                                v.Event:FireServer(v.Name)
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-
-while wait(0.2) do
-    for i,v2 in pairs(workspace.Enemy:GetChildren()) do
-        for _,v in pairs(v2:GetChildren()) do
-            if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                game:GetService("ReplicatedStorage").Remote.Skills:FireServer("MMExplosion", 9e18, v.HumanoidRootPart.CFrame)
-                game:GetService("ReplicatedStorage").Remote.Skills:FireServer("MExplosion", 9e18, v.HumanoidRootPart.CFrame)
-                game:GetService("ReplicatedStorage").Remote.Skills:FireServer("Explosion", 9e18, v.HumanoidRootPart.CFrame)
-        end
-    end
-end
-end
-end
-
-    else
-        local bosses = {workspace["[JOR]"],workspace["[MRMS]"],workspace["[Ace]"],workspace.Heaven}
-_G.killall = false
-while _G.killall do wait()
-    while wait(1) do
-        pcall(function()
-            for _,v in pairs(bosses) do
-                fireclickdetector(v.ClickDetector)
-            end
-            for i,v2 in pairs(game.Players:GetChildren()) do
-                for _,v in pairs(v2.Backpack:GetChildren()) do
-                    if v:FindFirstChild("DF") and v:FindFirstChild("Event") then
-                        if v.Name == "Explosion" then
-                            v.Event:FireServer("Explosive")
-                        else
-                            v.Event:FireServer(v.Name.."Punch")
-                            v.Event:FireServer(v.Name)
-                        end
-                    end
-                end
-                if v2.Character then
-                    for _,v in pairs(v2.Character:GetChildren()) do
-                        if v:FindFirstChild("DF") and v:FindFirstChild("Event") then
-                            if v.Name == "Explosion" then
-                                v.Event:FireServer("Explosive")
-                            else
-                                v.Event:FireServer(v.Name.."Punch")
-                                v.Event:FireServer(v.Name)
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-
-while wait(0.2) do
-    for i,v2 in pairs(workspace.Enemy:GetChildren()) do
-        for _,v in pairs(v2:GetChildren()) do
-            if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                game:GetService("ReplicatedStorage").Remote.Skills:FireServer("MMExplosion", 9e18, v.HumanoidRootPart.CFrame)
-                game:GetService("ReplicatedStorage").Remote.Skills:FireServer("MExplosion", 9e18, v.HumanoidRootPart.CFrame)
-                game:GetService("ReplicatedStorage").Remote.Skills:FireServer("Explosion", 9e18, v.HumanoidRootPart.CFrame)
-        end
-    end
-end
-end
-end
-
-    end
-end)
-
-
 local Tab = Window:NewTab("Auto Boss Spawn")
 Section = Tab:NewSection("Auto Boss spawn")
 Section:NewToggle("Ace", "ToggleInfo", function(state)
@@ -418,6 +312,36 @@ end)
 end
     end
 end)
+local Tab = Window:NewTab("Teleport")
+local Section = Tab:NewSection("Island")
+Section:NewButton("FirstIsland", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(22.8865, 10.1113, 450.129)
+end)
+Section:NewButton("Forest", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-247.167, 17.3357, -613.118)
+end)
+Section:NewButton("Mushroom", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(356.072, 6.55889, -1431.06)
+end)
+Section:NewButton("Skypia", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-746.866, 451.662, -211.894)
+end)
+Section:NewButton("Sahara", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1077.4, 5.46653, 759.74)
+end)
+Section:NewButton("Samurai", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-404.863, 23.8143, 2300.98)
+end)
+Section:NewButton("Red Forest", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1426.05, 10.4301, -285.533)
+end)
+Section:NewButton("Tower Haki", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-820.867, 149.675, 537.2)
+end)
+
+
+
+
 local Tab = Window:NewTab("Esp")
 local Section = Tab:NewSection("FE")
 Section:NewButton("esp", "ButtonInfo", function()
